@@ -1,0 +1,12 @@
+Pillow==2.9.0
+adblockparser==0.4
+beautifulsoup4==4.4.0
+extraction==0.2
+html5lib==0.999999
+lxml==3.4.4
+pika==0.9.14
+requests==2.7.0
+six==1.9.0
+summary-extraction==0.2
+w3lib==1.12.0
+wsgiref==0.1.2
