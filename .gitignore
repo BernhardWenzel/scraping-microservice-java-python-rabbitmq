@@ -10,3 +10,4 @@ python-scraping-service/venv
 java-api-backend/build
 java-api-backend/.gradle
 java-api-backend/java-api-backend.iws
+*.log
