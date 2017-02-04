@@ -2,7 +2,7 @@ package scraper.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import scraper.api.domain.BookmarkEventHandler;
 import scraper.api.filter.CORSFilter;

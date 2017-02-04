@@ -19,6 +19,8 @@ public class BookmarkEventHandler
     public void handleBookmarkCreate(Bookmark bookmark)
     {
         bookmark.setCreated(new Date());
+        bookmark.setUrl(bookmark.getUrl().trim());
+
     }
 
     @HandleAfterCreate

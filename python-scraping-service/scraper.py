@@ -1,25 +1,34 @@
-import urllib
-from summary import extract
+from sumy.parsers.html import HtmlParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lex_rank import LexRankSummarizer as Summarizer
+from sumy.nlp.stemmers import Stemmer
+from sumy.utils import get_stop_words
 
 class ScrapingResult:
     def __init__(self):
         self.url = None
         self.summary = None
 
+
+LANGUAGE = "english"
+SENTENCES_COUNT = 2
+
+
 class Scraper:
 
     def scrape(self, url):
-        url_summary = ""
+        complete_url = url
         try:
-            # get html from url
-            if not url.startswith("http"):
-                url = "http://" + url
-
             # get summary
             print "Retrieving page summary of %s... " % url
 
-            res = extract(urllib.urlopen(url).read())
-            url_summary = "No description found" if res['digest'] is None else res['digest']
+            parser = HtmlParser.from_url(complete_url, Tokenizer(LANGUAGE))
+            stemmer = Stemmer(LANGUAGE)
+
+            summarizer = Summarizer(stemmer)
+            summarizer.stop_words = get_stop_words(LANGUAGE)
+
+            url_summary = ''.join(str(sentence) for sentence in summarizer(parser.document, SENTENCES_COUNT))
 
         except Exception, e:
             url_summary = "Could not scrape summary. Reason: %s" % e.message

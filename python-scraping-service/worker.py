@@ -3,7 +3,7 @@ import json
 from scraper import Scraper
 
 credentials = pika.PlainCredentials("user", "password")
-parameters = pika.ConnectionParameters(host='192.168.22.10', credentials=credentials)
+parameters = pika.ConnectionParameters(host='localhost', credentials=credentials)
 
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
@@ -20,7 +20,7 @@ def publish_result(scraping_result):
 def callback(ch, method, properties, body):
     url = json.loads(body)['url']
     scraper = Scraper()
-    result = scraper.scrape(url)
+    result = scraper.scrape(url.strip())
     publish_result(result)
 
 channel.basic_consume(callback, queue='tasks.queue', no_ack=True)

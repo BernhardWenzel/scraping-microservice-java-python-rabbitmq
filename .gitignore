@@ -1,5 +1,7 @@
 .vagrant
-.idea
+.idea*
+.python*
+dataSources
 *.iml
 *.pyc
 *.class
