@@ -1,0 +1,10 @@
+textarea {
+    border: 1px solid #eee;
+    font-size: 0.8em;
+    color: #848484;
+}
+
+.summary {
+    color: #7b7b7b;
+    line-height: 1.3em;
+}
